@@ -13,10 +13,13 @@ int main(void) {
     
         // Display Menu 
         printf("\n--- Conversion Menu ---\n");
-        printf("1. Hexadecimal to Decimal\n");
-        printf("2. Decimal to Binary\n");
-        printf("3. Binary to Hexadecimal\n");
-        printf("4. Exit\n");
+        printf("1. Hexadecimal to Binary\n");
+        printf("2. Hexadecimal to Binary\n");
+        printf("3. Decimal to Hexadecimal\n");
+        printf("4. Decimal to Binary\n");
+        printf("5. Binary to Hexadecimal\n");
+        printf("6. Binary to Decimal\n");
+        printf("7. Exit\n");
         printf("-------------------------\n");
         printf("\nEnter your choice: "); 
         
@@ -27,7 +30,7 @@ int main(void) {
                 continue; 
         }
 
-        if (choice == 4) {
+        if (choice == 7) {
             printf("\n\nExiting...\n");
             exit(1); 
         }
