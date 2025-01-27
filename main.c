@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h> 
+#include "conversion.c"
 
 #define BUFFER 1000
 
@@ -8,7 +9,10 @@
 
 int main(void) {
     int choice; 
-    
+    char input[BUFFER]; 
+    char cleanedString[BUFFER];
+    char *result; 
+
     while(1) {
     
         // Display Menu 
@@ -21,9 +25,9 @@ int main(void) {
         printf("6. Binary to Decimal\n");
         printf("7. Exit\n");
         printf("-------------------------\n");
-        printf("\nEnter your choice: "); 
+        printf("\nEnter An Input > "); 
         
-        /* Check User Input */
+        /* Check User Choice */
         if (scanf("%d", &choice) != 1) {
             printf("Invalid Input. Please Enter A Number.\n"); 
             while (getchar() != '\n')      /* Clears Buffer */
@@ -35,46 +39,56 @@ int main(void) {
             exit(1); 
         }
 
+        if (choice > 1 && choice < 8) {
+            printf("Input Out Of Range, Try Again!\n");
+            continue; 
+        }
+        
+        /* Check User Value */
+        printf("Enter Value to Convert > "); 
+        if (scanf("%s", input) != 1) { /* Array decays to pointer */
+            printf("Invalid Input. Please Enter A Valid Input.\n"); 
+            while (getchar() != '\n')      /* Clears Buffer */
+                continue; 
+        }
+        
+        /* Clean User Value */
+        size_t len = strlen(input);
+        if (len > 0 && input[len - 1] == '\n') {
+            input[len - 1] = '\0';
+        } 
 
+        char *str = input; 
+
+        if (*str == '0') {
+            (str)++; 
+            if (*str == 'x' || *str == 'b' || *str == 'X' || *str == 'B') {
+                (str)++;
+            }
+        } 
+        
+        strcpy(cleanedString, str); 
+        printf("Cleaned String: %s\n", cleanedString); /* Clean User Input*/
+
+
+        /* Main Conversion Logic */
+        switch (choice) {
+            case 1:
+                result = hexToBin(cleanedString);
+                printf("Binar > %s\n", result); 
+                break;
+
+        }
 
 
     }
 
 
 
-
-    printf("Byte Conversion - Enter a HexaDecimal, Binary Value, Decimal Value, to be converted into one of following choices\n\n");
-    printf("Input > "); 
-
-    /* User Conversion Option*/
-    
-
-    /* Get User Input */
-
-    char input[BUFFER]; /* To create an array with fixed size buffer */
-    char cleanedString[BUFFER]; 
-    
     if (!fgets(input, sizeof(input), stdin)) {
         exit(1); 
     }
     
-    size_t len = strlen(input);
-    if (len > 0 && input[len - 1] == '\n') {
-        input[len - 1] = '\0';
-    } 
-
-    char *str = input; 
-
-    if (*str == '0') {
-        (str)++; 
-        if (*str == 'x' || *str == 'b' || *str == 'X' || *str == 'B') {
-            (str)++;
-        }
-    } 
-    
-    strcpy(cleanedString, str); 
-    printf("Cleaned String: %s\n", cleanedString); /* Clean User Input*/
-
         
 
     return 0; 
