@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h> 
-#include "conversion.c"
+#include "conversion.h"
 
 #define BUFFER 1000
 
@@ -17,7 +17,7 @@ int main(void) {
     
         // Display Menu 
         printf("\n--- Conversion Menu ---\n");
-        printf("1. Hexadecimal to Binary\n");
+        printf("1. Hexadecimal to Decimal\n");
         printf("2. Hexadecimal to Binary\n");
         printf("3. Decimal to Hexadecimal\n");
         printf("4. Decimal to Binary\n");
@@ -71,25 +71,26 @@ int main(void) {
         printf("Cleaned String: %s\n", cleanedString); /* Clean User Input*/
 
 
+
         /* Main Conversion Logic */
         switch (choice) {
             case 1:
-                result = hexToBin(cleanedString);
-                printf("Binar > %s\n", result); 
+                result = hexToDec(cleanedString);
+                printf("Decimal > %s\n", result); 
                 break;
 
+            case 2: 
+                result = hexToBin(cleanedString);
+                printf("Binary > %s\n", result);
+                break;
         }
 
 
     }
 
-
-
     if (!fgets(input, sizeof(input), stdin)) {
         exit(1); 
     }
-    
-        
 
     return 0; 
 }
