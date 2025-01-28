@@ -2,16 +2,19 @@
 #define CONVERSION_H
 
 #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <errno.h>
 
 /* Function Prototype Here */ 
 
 char *hexToDec(const char *input); 
 char *hexToBin(const char *input); 
 
-char *DecToHex(const char *input); 
-char *DecToBin(const char *input);
+char *decToHex(const char *input); 
+char *decToBin(const char *input);
 
-char *BinToHex(const char *input); 
-char *BinToDec(const char *input); 
+char *binToHex(const char *input); 
+char *binToDec(const char *input); 
 
 #endif 

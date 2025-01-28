@@ -8,10 +8,11 @@
 /* Create functions in header file to change between different data notation */
 
 int main(void) {
-    int choice; 
-    char input[BUFFER]; 
+    int choice;
+    char *result = NULL;
+
+    char input[BUFFER];
     char cleanedString[BUFFER];
-    char *result; 
 
     while(1) {
     
@@ -39,9 +40,9 @@ int main(void) {
             exit(1); 
         }
 
-        if (choice > 1 && choice < 8) {
+        if (choice < 1 || choice > 7) {
             printf("Input Out Of Range, Try Again!\n");
-            continue; 
+            continue;
         }
         
         /* Check User Value */
@@ -76,22 +77,30 @@ int main(void) {
         switch (choice) {
             case 1:
                 result = hexToDec(cleanedString);
-                printf("Decimal > %s\n", result); 
+                printf("Decimal > %s\n", result);
+                free(result);
                 break;
 
             case 2: 
                 result = hexToBin(cleanedString);
                 printf("Binary > %s\n", result);
+                free(result); 
                 break;
+/*
+            case 3: 
+                result = decToHex(cleanedString);
+                printf("HexaDecimal > %s\n", result);
+                free(result); 
+                break; 
+
+            case 4:
+                result = decToBin(cleanedString);
+                printf("Binary > %s\n", result);
+                free(result); 
+                break;
+*/
         }
-
-
     }
-
-    if (!fgets(input, sizeof(input), stdin)) {
-        exit(1); 
-    }
-
     return 0; 
 }
 
