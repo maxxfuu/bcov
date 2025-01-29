@@ -5,8 +5,6 @@
 
 #define BUFFER 1000
 
-/* Create functions in header file to change between different data notation */
-
 int main(void) {
     int choice;
     char *result = NULL;
@@ -79,29 +77,37 @@ int main(void) {
                 free(result);
                 break;
 
-            case 2: 
+            case 2:
                 result = hexToBin(cleanedString);
                 printf("Binary > %s\n", result);
                 free(result); 
                 break;
 
-            case 3: 
+            case 3:
                 result = decToHex(cleanedString);
                 printf("HexaDecimal > %s\n", result);
                 free(result); 
                 break; 
 
-/*
             case 4:
                 result = decToBin(cleanedString);
                 printf("Binary > %s\n", result);
                 free(result); 
                 break;
-*/
+
+            case 5: 
+                result = binToHex(cleanedString); 
+                printf("HexaDecimal %s\n", result);
+                free(result); 
+                break;
+
+            case 6:
+                result = binToDec(cleanedString); 
+                printf("Decimal %s\n", result);
+                free(result);
+                break;
+ 
         }
     }
     return 0; 
 }
-
-/*Take a string, check for the first two characters, check if the last char is end of line character*/
-

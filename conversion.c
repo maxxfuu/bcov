@@ -1,7 +1,16 @@
 #include "conversion.h"
 
-/* Need to fix function logic */
+/* Helper Functions */
+static void reverseString(char *input) {
+    int length = sizeof(input);
+    for (int i = 0; i < length; i++) {
+        char temp = input[i]; 
+        input[i] = input[length - i - 1];
+        input[length - i - 1] = temp; 
+    }
+}
 
+/* Main Logic */
 char *hexToDec(const char *input) {
     errno = 0;
     char *endptr;
@@ -78,6 +87,51 @@ char *decToHex(const char* input) {
     return result;
 }
 
+char *decToBin(const char* input) {
+    char *endptr;
+    unsigned long value = strtoul(input, &endptr, 10);
+    char *result = malloc(65); 
+    
+    if (value == 0) {
+        strcpy(result, "0");
+        return result;
+    }
+    
+    int index = 0; 
+    while (value > 0) {
+        result[index++] = (value % 2) + '0';
+        value /= 2;
+    }
+    result[index] = '\0';
+    reverseString(result);
 
+    return result;
+}
 
+char *binToHex(const char *input) {
+    char *endptr; 
+    unsigned long value = strtoul(input, &endptr, 2); 
+    
+    if (*endptr != '\0') {
+        return NULL;
+    }
+    
+    char *result = malloc(17); 
+    if (!result) {
+        return NULL;
+    }
+
+    snprintf(result, 17, "%lx", value); 
+    return result; 
+}
+
+char *binToDec(const char *input) {
+    char *endptr; 
+    unsigned long value = strtoul(input, &endptr, 2);
+    
+    char *result = malloc(20);
+
+    snprintf(result, 20, "%lu", value); 
+    return result;
+}
 
