@@ -68,7 +68,16 @@ char *hexToBin(const char *input) {
 }
 
 char *decToHex(const char* input) {
-    char *result; 
+    errno = 0;
+    char *endptr;
 
-    return result; 
- }
+    unsigned long value = strtoul(input, &endptr, 10);
+    char *result = malloc(20);
+    snprintf(result, 20, "%lx", value);
+
+    return result;
+}
+
+
+
+
