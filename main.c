@@ -69,9 +69,7 @@ int main(void) {
         } 
         
         strcpy(cleanedString, str); 
-        printf("Cleaned String: %s\n", cleanedString); /* Clean User Input*/
-
-
+        // printf("Cleaned String: %s\n", cleanedString); /* Clean User Input*/
 
         /* Main Conversion Logic */
         switch (choice) {
@@ -86,13 +84,14 @@ int main(void) {
                 printf("Binary > %s\n", result);
                 free(result); 
                 break;
-/*
+
             case 3: 
                 result = decToHex(cleanedString);
                 printf("HexaDecimal > %s\n", result);
                 free(result); 
                 break; 
 
+/*
             case 4:
                 result = decToBin(cleanedString);
                 printf("Binary > %s\n", result);
