@@ -5,7 +5,41 @@
 
 #define BUFFER 1000
 
-int main(void) {
+/*
+ * let main take arguments
+ * let there be three flags to be defined
+ * 
+ * after user input two flags, the last value should be the input value
+ *
+ * */
+
+/* enum to create integral constants for readability */
+typedef enum {
+    INPUT_BINARY,
+    INPUT_DECIMAL,
+    INPUT_HEXA
+} InputType;
+
+typedef enum {
+    OUTPUT_BINARY,
+    OUTPUT_DECIMAL,
+    OUTPUT_HEXA
+} OutputType;
+
+int main(int argc, char **argv) {
+    
+    /* Total arguement count, 4*/
+    if (argc != 4) {
+        fprintf(stderr, "\nERROR\n\n");
+        fprintf(stderr, "Usage:\n");
+        fprintf(stderr, "  %s -b|-d|-x -B|-D|-X <Input Value>\n\n", argv[0]);
+        fprintf(stderr, "Examples:\n");
+        fprintf(stderr, "  %s -b -D 010010   (binary to decimal)\n", argv[0]);
+        fprintf(stderr, "  %s -x -B FF       (hex FF to binary)\n", argv[0]);
+        return 1;
+    }
+
+    printf("Count: %d\n", argc);
     int choice;
     char *result = NULL;
 
@@ -109,5 +143,5 @@ int main(void) {
  
         }
     }
-    return 0; 
+    return 0;
 }

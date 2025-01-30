@@ -6,6 +6,8 @@
 #include <string.h>
 #include <errno.h>
 
+static void reverseString(char *input);
+
 /* Function Prototype Here */ 
 
 char *hexToDec(const char *input); 
