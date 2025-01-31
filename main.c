@@ -92,15 +92,9 @@ int main(int argc, char **argv) {
             break;
 
         case INPUT_DECIMAL:
- ea          switch (outputType) {
+            switch (outputType) {
                 case OUTPUT_BINARY:
                     result = decToBin(cleanedString);
-                    if (result == NULL) {
-                        fprintf(stderr, "Error: Conversion Failed\n");
-                        return 1;
-                    } else {
-                        printf("Result: %s\n", result);
-                    }
                     break;
                 case OUTPUT_DECIMAL:
                     // Decimal to Decimal
@@ -131,8 +125,10 @@ int main(int argc, char **argv) {
     if (result == NULL) {
         printf("Error: Conversion Failed"); 
         return 1;
+    } else {
+        printf("%s\n", result);
     }
-
+    
     free(result);
 
     return 0;
