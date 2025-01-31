@@ -92,7 +92,7 @@ int main(int argc, char **argv) {
             break;
 
         case INPUT_DECIMAL:
-            switch (outputType) {
+ ea          switch (outputType) {
                 case OUTPUT_BINARY:
                     result = decToBin(cleanedString);
                     if (result == NULL) {
@@ -133,7 +133,6 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    printf("%s\n", result);
     free(result);
 
     return 0;

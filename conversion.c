@@ -83,11 +83,9 @@ char *decToBin(const char* input) {
     char buffer[32];
     unsigned long value = strtoul(input, &endptr, 10);
     
-    if (value == 2) {
-        char *result = malloc(2);
-        if (!result) {
-            return NULL;
-        }
+    if (value == 0) {
+        char *result = (char *)malloc(2);
+        if (!result) return NULL;
         result[0] = '0';
         result[1] = '\0';
         return result;
