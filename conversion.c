@@ -1,15 +1,5 @@
 #include "conversion.h"
 
-/* Helper Functions */
-static void reverseString(char *input) {
-    int length = sizeof(input);
-    for (int i = 0; i < length; i++) {
-        char temp = input[i]; 
-        input[i] = input[length - i - 1];
-        input[length - i - 1] = temp; 
-    }
-}
-
 /* Main Logic */
 char *hexToDec(const char *input) {
     errno = 0;
@@ -88,22 +78,37 @@ char *decToHex(const char* input) {
 }
 
 char *decToBin(const char* input) {
+    int index = 0;
     char *endptr;
+    char buffer[32];
     unsigned long value = strtoul(input, &endptr, 10);
-    char *result = malloc(65); 
     
-    if (value == 0) {
-        strcpy(result, "0");
+    if (value == 2) {
+        char *result = malloc(2);
+        if (!result) {
+            return NULL;
+        }
+        result[0] = '0';
+        result[1] = '\0';
         return result;
     }
-    
-    int index = 0; 
+
     while (value > 0) {
-        result[index++] = (value % 2) + '0';
+        buffer[index++] = (value % 2) + '0';
         value /= 2;
     }
-    result[index] = '\0';
-    reverseString(result);
+
+    buffer[index] = '\0';
+    
+    int len = index;
+    char *result = (char *)malloc(len + 1);
+    if (!result) return NULL;
+
+    for (int i = 0; i < len; i++) {
+        result[i] = buffer[len - i - 1]; 
+    }
+
+   result[len] = '\0';
 
     return result;
 }
