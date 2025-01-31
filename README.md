@@ -3,6 +3,8 @@
 ## **Overview**
 `bconv` is a lightweight command-line tool for converting numbers between **binary**, **decimal**, and **hexadecimal** formats. It allows users to quickly perform conversions directly in the terminal without needing an interactive interface.
 
+https://github.com/user-attachments/assets/282043a7-6a7a-401f-9b5b-1560aa4c306b
+
 ## **Features**
 - Convert between **binary, decimal, and hexadecimal** number systems.
 - Simple CLI syntax using flags.
