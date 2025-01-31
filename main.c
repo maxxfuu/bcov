@@ -63,15 +63,6 @@ int main(int argc, char **argv) {
     }
 
     char *str = argv[3];
-    // printf("%s\n", argv[3]);
-
-    /* if (*str == '0') {
-        (str)++;
-        if (*str == 'x' || *str == 'b' || *str == 'X' || *str == 'B') {
-            (str)++;
-        }
-    } */ 
-    
     strcpy(cleanedString, str);
     // printf("Cleaned String: %s\n", cleanedString); /* Clean User Input*/
 
