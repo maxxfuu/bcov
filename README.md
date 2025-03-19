@@ -1,4 +1,4 @@
-# **bconv - Byte Conversion Command Line Tool**
+# **BCON- Byte Conversion Command Line Tool**
 
 ## **Overview**
 `bconv` is a lightweight command-line tool for converting numbers between **binary**, **decimal**, and **hexadecimal** formats. It allows users to quickly perform conversions directly in the terminal without needing an interactive interface.
